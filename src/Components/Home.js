@@ -2,32 +2,29 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-// assets
-// import { pets } from '../data/data.js';
+import api from '../api';
 
 // components
 import CardPet from './CardPet.js';
 
 const Home = () => {
 
-  // call api
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    // call api
+    (async () => {
       try {
-        const response = await fetch('/api/pets');
-        const body = await response.json();
-        setPets(body);
-      } catch (err) {
-        console.log('error', err);
+        const { data } = await api.get('/api/pets')
+        setPets(data);
+      } catch (error) {
+        console.log('error', error.message);
       }
-    }
+    })();
 
-    fetchData();
   }, []);
 
-  if(!pets.length) {
+  if (!pets.length) {
     return (
       <motion.section className='home' initial={{ width: 0 }} animate={{ width: "auto", transition: { duration: 0.5 } }} exit={{ x: window.innerWidth, transition: { duration: 0.5 } }}>
         <p>Nenhum amiguinho disponível! 😢</p>
