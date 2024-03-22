@@ -24,7 +24,6 @@ const LoginForm = () => {
 	});
 
 	const onSubmit = (data) => {
-		// console.log('submit', data);
 		login(data.email, data.password);
 	};
 
