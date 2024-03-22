@@ -2,10 +2,9 @@
   "name": "adopet",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:9000",
-  "dependencies": {
+    "dependencies": {
     "@headlessui/react": "^1.6.6",
-    "axios": "^1.4.0",
+    "axios": "^1.6.8",
     "framer-motion": "^6.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
