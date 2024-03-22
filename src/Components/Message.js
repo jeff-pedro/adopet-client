@@ -55,7 +55,7 @@ const Message = () => {
           const { data } = await api.get(`api/tutors/${id}`);
           setUserData(data);
 
-          console.log('Success:', data)
+          // console.log('Success:', data)
         } catch (err) {
           console.log('Error:', err)
         }
