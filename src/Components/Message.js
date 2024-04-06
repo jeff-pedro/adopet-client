@@ -2,22 +2,24 @@
 import Button from './Button';
 
 // dependencies
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useForm } from "react-hook-form";
 import { useContext, useEffect, useState } from 'react';
 
-// assets
-// import loggedUser from '../assets/logged-user.png';
+// api
+import api from '../api';
 
 // contexts
 import { AuthContext } from '../contexts/auth';
 
 const Message = () => {
+  const { user } = useContext(AuthContext);
 
-  // const { authenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const location = useLocation();
+
   // destructuring useForm
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onBlur',
@@ -25,49 +27,41 @@ const Message = () => {
   });
 
   const onSubmit = async (data) => {
+    // FEATURE: implementar envio de email para o Adopet
     if (location.pathname === '/mensagem') {
       console.log(data);
+      alert('Mensagem enviada com sucesso!')
     } else {
-
+      // call api
       try {
-        await fetch(`/api/tutors/${user.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
+        await api.put(`/api/tutors/${userData.id}`, data);
 
         alert('Perfil alterado com sucesso!')
-      } catch (err) {
-        console.log('Error:', err);
+
+        navigate('/home')
+      } catch (error) {
+        console.log('Error:', error);
       }
     }
   };
 
-  const [user, setUser] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    const recoveredUser = localStorage.getItem('user');
-    let loggedUser;
+    if (location.pathname === '/perfil') {
+      (async () => {
+        try {
+          const { id } = JSON.parse(user);
+          const { data } = await api.get(`api/tutors/${id}`);
+          setUserData(data);
 
-    if (recoveredUser) {
-      loggedUser = JSON.parse(recoveredUser);
+          // console.log('Success:', data)
+        } catch (err) {
+          console.log('Error:', err)
+        }
+      })();
     }
-
-    async function fetchData() {
-      try {
-        const response = await fetch(`api/tutors/${loggedUser.id}`);
-        const result = await response.json();
-        setUser(result);
-        // console.log('Success:', result)
-      } catch (err) {
-        console.log('Error:', err)
-      }
-    }
-
-    fetchData();
-  }, [])
+  }, [user, location])
 
   return (
     <motion.section className='message' initial={{ width: 0 }} animate={{ width: "auto", transition: { duration: 0.5 } }} exit={{ x: window.innerWidth, transition: { duration: 0.5 } }}>
@@ -101,22 +95,22 @@ const Message = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <legend>Perfil</legend>
               <label htmlFor='user-pic'>Foto</label>
-              <input type="image" id='userPic' src={user.profilePictureUrl} alt="Usuário logado" />
+              <input type="image" id='userPic' src={userData.profilePictureUrl} alt="Usuário logado" />
               <a href="#">Clique na foto para editar</a>
 
               <label htmlFor="name">Nome</label>
-              <input id='name' type="text" {...register("name", { required: 'É necessário informar seu nome', maxLength: { value: 40, message: 'O número máximo de caracteres é 40' } })} placeholder='Insira seu nome completo' defaultValue={user.name} />
+              <input id='name' type="text" {...register("name", { required: 'É necessário informar seu nome', maxLength: { value: 40, message: 'O número máximo de caracteres é 40' } })} placeholder='Insira seu nome completo' defaultValue={userData.name} />
               {errors.name && <p className="error">{errors.name.message}</p>}
 
               <label htmlFor="phone">Telefone</label>
-              <input type="tel" id='phone' {...register('phone', { required: 'Informe um número de telefone', pattern: /\(?[1-9]{2}\)?\s?9?[0-9]{8}/ })} placeholder='Insira seu telefone e/ou whatsapp' defaultValue={user.phone} />
+              <input type="tel" id='phone' {...register('phone', { required: 'Informe um número de telefone', pattern: /\(?[1-9]{2}\)?\s?9?[0-9]{8}/ })} placeholder='Insira seu telefone e/ou whatsapp' defaultValue={userData.phone} />
               {errors.phone && <p className="error">{errors.phone.message || 'Por favor, verifique o número digitado'}</p>}
 
               <label htmlFor="city">Cidade</label>
-              <input type="text" id='city' {...register('city', { required: 'Informe a cidade em que você mora' })} placeholder='Informe a cidade em que você mora' defaultValue={user.city} />
+              <input type="text" id='city' {...register('city', { required: 'Informe a cidade em que você mora' })} placeholder='Informe a cidade em que você mora' defaultValue={userData.city} />
 
               <label htmlFor="about">Sobre</label>
-              <textarea spellCheck='false' name="about" id="about" {...register('about')} cols="30" rows="8" placeholder='Escreva sua mensagem.' defaultValue={user.about}></textarea>
+              <textarea spellCheck='false' name="about" id="about" {...register('about')} cols="30" rows="8" placeholder='Escreva sua mensagem.' defaultValue={userData.about}></textarea>
 
               <Button type='submit' children='Salvar' />
             </form>

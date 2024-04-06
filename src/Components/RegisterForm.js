@@ -7,6 +7,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+// api
+import api from "../api"
+
 const RegisterForm = () => {
 	const navigate = useNavigate();
 
@@ -38,25 +41,16 @@ const RegisterForm = () => {
 	const onSubmit = async (data) => {
 		// call api
 		try {
-			const response = await fetch('/api/tutors', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(data)
-			});
-
-			const result = await response.json();
-
-			if (response.status === 400) {
-				setMensagemApi({ email: result.error });
-				return;
-			}
+			await api.post('/api/tutors', data);
 
 			alert("Usuário cadastrado com sucesso!")
-			
 		} catch (err) {
-			console.log(err);
+			const { response: { status } } = err;
+
+			if (status === 400) {
+				setMensagemApi({ email: data.email });
+				return;
+			}
 		}
 
 		navigate("/login");
@@ -97,7 +91,7 @@ const RegisterForm = () => {
 					{...register("email", {
 						required: "É necessário informar um endereço de email",
 						pattern:
-							/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+							/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 					})}
 					placeholder="Escolha seu melhor email"
 				/>
