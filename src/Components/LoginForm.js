@@ -109,7 +109,7 @@ const LoginForm = () => {
         <a
           href="/cadastro"
           className="register__newUser"
-          data-test="registerPage"
+          data-test="register-form"
         >
           Faça seu cadastro
         </a>

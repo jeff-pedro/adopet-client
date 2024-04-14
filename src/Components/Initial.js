@@ -34,14 +34,14 @@ const Home = () => {
           <a
             className="initial__link"
             href="/cadastro"
-            data-test="registerPage"
+            data-test="register-form"
           >
             Cadastrar
           </a>
           <span style={{ fontSize: 14, padding: "0 1rem", color: "#fff" }}>
             ou
           </span>
-          <a className="initial__link" href="/login" data-test="loginPage">
+          <a className="initial__link" href="/login" data-test="login-form">
             Fazer login
           </a>
         </div>

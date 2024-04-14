@@ -116,7 +116,7 @@ const RegisterForm = () => {
           />
           <input
             id="pass-create"
-            data-test="pass-create"
+            data-test="pwd-create"
             type={visiblePassword.password ? "text" : "password"}
             {...register("password", {
               required: "Crie uma senha",
@@ -140,7 +140,7 @@ const RegisterForm = () => {
           />
           <input
             id="pass-confirm"
-            data-test="pass-confirm"
+            data-test="pwd-confirm"
             type={visiblePassword.passwordRetry ? "text" : "password"}
             {...register("confirm_password", {
               required: "Repita a senha criada acima",
