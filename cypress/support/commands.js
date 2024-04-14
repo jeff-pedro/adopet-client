@@ -2,6 +2,10 @@
 
 import Login from "./pages/login/loginPage";
 
+Cypress.Commands.add("getByData", (selector) => {
+  return cy.get(`[data-test="${selector}"]`);
+});
+
 Cypress.Commands.add("login", (email, password) => {
   Login.accessPage();
   Login.fillTheForm(email, password);
