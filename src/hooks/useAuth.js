@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import api from "../api"
+import api from "../api";
 
 export default function useAuth() {
   const navigate = useNavigate();
@@ -11,8 +11,8 @@ export default function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const recoveredToken = localStorage.getItem('token');
-    const recoveredUser = localStorage.getItem('user');
+    const recoveredToken = localStorage.getItem("token");
+    const recoveredUser = localStorage.getItem("user");
 
     if (recoveredToken) {
       api.defaults.headers.Authorization = `Bearer ${JSON.parse(recoveredToken)}`;
@@ -25,22 +25,30 @@ export default function useAuth() {
 
   const login = async (email, password) => {
     // call api
-    const { data: { accessToken, user } } = await api.post("/api/login", { email, password });
+    try {
+      const {
+        data: { accessToken, user },
+      } = await api.post("/api/login", { email, password });
 
-    localStorage.setItem("token", JSON.stringify(accessToken));
-    localStorage.setItem("user", JSON.stringify(user));
-    api.defaults.headers.Authorization = `Bearer ${accessToken}`;
-    setUser(user);
-    navigate('/home');
+      localStorage.setItem("token", JSON.stringify(accessToken));
+      localStorage.setItem("user", JSON.stringify(user));
+      api.defaults.headers.Authorization = `Bearer ${accessToken}`;
+
+      setUser(user);
+
+      navigate("/home");
+    } catch (err) {
+      throw new Error(err.response.data.error);
+    }
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     api.defaults.headers.Authorization = undefined;
-    navigate('/');
+    navigate("/");
   };
 
-  return { user, loading, login, logout }
+  return { user, loading, login, logout };
 }
