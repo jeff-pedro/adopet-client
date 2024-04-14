@@ -1,8 +1,8 @@
 export const ELEMENTS = {
-  registerPage: '[data-test="registerPage"]',
+  registerPage: '[data-test="register-form"]',
   name: '[data-test="name"]',
   email: '[data-test="email"]',
-  createPassword: '[data-test="pass-create"]',
-  confirmPassword: '[data-test="pass-confirm"]',
+  createPassword: '[data-test="pwd-create"]',
+  confirmPassword: '[data-test="pwd-confirm"]',
   btnRegister: '[data-test="Cadastrar"]',
 };
