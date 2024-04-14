@@ -1,0 +1,40 @@
+[{
+    "name": "John Wick",
+    "email": "john.wick@mail.com",
+    "password": "John123",
+    "phone": "+711233334444",
+    "city": "Padhorje",
+    "about": "I am a loving tutor",
+    "profilePictureUrl": "https://shorturl.at/lpO48",
+    "role": "standard"
+  },
+  {
+    "name": "Dick Dastardly",
+    "email": "dick.dastardly@mail.com",
+    "password": "Dick123",
+    "phone": "+188244442222",
+    "city": "Los Angeles",
+    "about": "I am a attencious tutor",
+    "profilePictureUrl": "https://shorturl.at/bzCKS",
+    "role": "standard"
+  },
+  {
+    "name": "Newt Scamander",
+    "email": "newt.scamander@mail.com",
+    "password": "Newt123",
+    "phone": "+4466211115555",
+    "city": "London",
+    "about": "I am a caring tutor",
+    "profilePictureUrl": "https://shorturl.at/erzCE",
+    "role": "standard"
+  },
+  {
+    "name": "Hector Barbossa",
+    "email": "barbossa@pirates.sea",
+    "password": "Hector123",
+    "phone": "+011233334444",
+    "city": "Lisbon",
+    "about": "All pets loves me",
+    "profilePictureUrl": "https://tinyurl.com/ysansdn5",
+    "role": "administrator"
+  }]
