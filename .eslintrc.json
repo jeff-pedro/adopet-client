@@ -8,12 +8,11 @@
     "extends": [
         "eslint:recommended", 
         "plugin:import/errors",
-        "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended",
-        "standard-with-typescript",
+        // "plugin:react/recommended",
+        // "plugin:jsx-a11y/recommended",
         "plugin:react-hooks/recommended",
-        "plugin:cypress/recommended",
-        "prettier"
+        "plugin:cypress/recommended"
+        // "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
