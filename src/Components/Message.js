@@ -55,11 +55,12 @@ const Message = () => {
     if (location.pathname === "/perfil") {
       (async () => {
         try {
-          const { id } = JSON.parse(user);
+          const { id } = user;
           const { data } = await api.get(`api/tutors/${id}`);
+
           setUserData(data);
 
-          // console.log('Success:', data)
+          // console.log("Success:", data);
         } catch (err) {
           console.log("Error:", err);
         }
@@ -152,7 +153,7 @@ const Message = () => {
             />
             {errors.msg && <p className="error">{errors.msg.message}</p>}
 
-            <Button type="submit" children="Enviar" />
+            <Button type="submit" children="Enviar" data-test="btn-message" />
           </form>
         </>
       ) : (
@@ -167,6 +168,7 @@ const Message = () => {
             <input
               type="image"
               id="userPic"
+              data-test="photo"
               src={userData.profilePictureUrl}
               alt="Usuário logado"
             />
@@ -176,6 +178,7 @@ const Message = () => {
             <input
               id="name"
               type="text"
+              data-test="name"
               {...register("name", {
                 required: "É necessário informar seu nome",
                 maxLength: {
@@ -192,6 +195,7 @@ const Message = () => {
             <input
               type="tel"
               id="phone"
+              data-test="phone"
               {...register("phone", {
                 required: "Informe um número de telefone",
                 pattern: /\(?[1-9]{2}\)?\s?9?[0-9]{8}/,
@@ -210,6 +214,7 @@ const Message = () => {
             <input
               type="text"
               id="city"
+              data-test="city"
               {...register("city", {
                 required: "Informe a cidade em que você mora",
               })}
@@ -222,6 +227,7 @@ const Message = () => {
               spellCheck="false"
               name="about"
               id="about"
+              data-test="about"
               {...register("about")}
               cols="30"
               rows="8"
@@ -229,7 +235,7 @@ const Message = () => {
               defaultValue={userData.about}
             />
 
-            <Button type="submit" children="Salvar" />
+            <Button type="submit" children="Salvar" dataTest="btn-profile" />
           </form>
         </>
       )}

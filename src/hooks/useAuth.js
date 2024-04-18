@@ -16,7 +16,9 @@ export default function useAuth() {
 
     if (recoveredToken) {
       api.defaults.headers.Authorization = `Bearer ${JSON.parse(recoveredToken)}`;
-      setUser(recoveredUser);
+      
+      setUser(JSON.parse(recoveredUser));
+
     }
 
     // to avoid page loading without properly gathering the user info from localStorage, we must use a state to wait for it. When the data fetch is ended, then we set Loading to false and then we render the page (this last one is made on Routes file)
