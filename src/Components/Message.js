@@ -153,7 +153,7 @@ const Message = () => {
             />
             {errors.msg && <p className="error">{errors.msg.message}</p>}
 
-            <Button type="submit" children="Enviar" data-test="btn-message" />
+            <Button type="submit" children="Enviar" dataTest="submit-message" />
           </form>
         </>
       ) : (
@@ -235,7 +235,7 @@ const Message = () => {
               defaultValue={userData.about}
             />
 
-            <Button type="submit" children="Salvar" dataTest="btn-profile" />
+            <Button type="submit" children="Salvar" dataTest="submit-profile" />
           </form>
         </>
       )}

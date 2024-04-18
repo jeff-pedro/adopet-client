@@ -41,15 +41,20 @@ const Header = () => {
       setUserMenu(
         <Menu>
           <Menu.Button className="menu__button">
-            <img className="header__user" src={loggedUser} alt="Usuário" />
+            <img
+              className="header__user"
+              src={loggedUser}
+              alt="Usuário"
+              data-test="user-button"
+            />
           </Menu.Button>
           <Menu.Items className="menu__content">
-            <a className="button" href="/perfil" data-test="profile-form">
+            <a className="button" href="/perfil" data-test="view-profile">
               Ver Perfil
             </a>
             <Button
               handleClick={handleLogout}
-              dataTest="btn-logout"
+              dataTest="logout-button"
               children="Logout"
             />
           </Menu.Items>
@@ -59,10 +64,15 @@ const Header = () => {
       setUserMenu(
         <Menu>
           <Menu.Button className="menu__button">
-            <img className="header__user" src={userPic} alt="Usuário" />
+            <img
+              className="header__user"
+              src={userPic}
+              alt="Usuário"
+              data-test="user-link"
+            />
           </Menu.Button>
           <Menu.Items className="menu__content">
-            <a className="button" href="/login">
+            <a className="button" href="/login" data-test="login-button">
               Login
             </a>
           </Menu.Items>
@@ -81,11 +91,17 @@ const Header = () => {
             alt=""
             aria-hidden="true"
           />
-          <Link className="header__home" aria-label="Tela inicial" to="/" />
+          <Link
+            className="header__home"
+            aria-label="Tela inicial"
+            data-test="initial-link"
+            to="/"
+          />
           <Link
             className="header__message"
             to="/mensagem"
             aria-label="Ir para Mensagens"
+            data-test="message-link"
           />
         </div>
         {userMenu}

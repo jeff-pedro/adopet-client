@@ -27,21 +27,21 @@ const Home = () => {
           : "Adotar pode mudar uma vida. Que tal buscar seu novo melhor amigo hoje? Vem com a gente!"}
       </p>
       <div className="home__buttons">
-        <Link className="button" to="/home">
+        <Link className="button" to="/home" data-test="home-link">
           Ver pets disponíveis para adoção
         </Link>
         <div>
           <a
             className="initial__link"
             href="/cadastro"
-            data-test="register-form"
+            data-test="register-link"
           >
             Cadastrar
           </a>
           <span style={{ fontSize: 14, padding: "0 1rem", color: "#fff" }}>
             ou
           </span>
-          <a className="initial__link" href="/login" data-test="login-form">
+          <a className="initial__link" href="/login" data-test="login-link">
             Fazer login
           </a>
         </div>
