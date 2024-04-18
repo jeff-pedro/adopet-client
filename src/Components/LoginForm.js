@@ -104,7 +104,7 @@ const LoginForm = () => {
         <a className="register__forgot" href="#" data-test="forgot">
           Esqueci minha senha
         </a>
-        <Button type="submit" children="Entrar" />
+        <Button type="submit" children="Entrar" dataTest="btn-login" />
         <p>Ainda não tem conta?</p>
         <a
           href="/cadastro"

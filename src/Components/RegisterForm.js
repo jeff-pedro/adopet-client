@@ -95,7 +95,7 @@ const RegisterForm = () => {
           {...register("email", {
             required: "É necessário informar um endereço de email",
             pattern:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
           })}
           placeholder="Escolha seu melhor email"
         />
@@ -157,7 +157,7 @@ const RegisterForm = () => {
           <p className="error">{errors.confirm_password.message}</p>
         )}
 
-        <Button type="submit" children="Cadastrar" />
+        <Button type="submit" children="Cadastrar" dataTest="btn-register" />
       </form>
     </motion.section>
   );
