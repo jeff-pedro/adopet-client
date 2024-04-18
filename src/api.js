@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://adopet-api-u7ms.onrender.com"
-  // baseURL: "http://localhost:9000"
+  baseURL:
+    process.env.NODE_ENV === "prod"
+      ? "https://adopet.api.sapituca.site"
+      : "http://localhost:9000",
 });
