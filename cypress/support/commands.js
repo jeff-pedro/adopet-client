@@ -1,26 +1,24 @@
 /// <reference types="cypress" />
 
-import Login from "./pages/login/loginPage";
-
-Cypress.Commands.add("getByData", (selector) => {
+Cypress.Commands.add("getBySel", (selector) => {
   return cy.get(`[data-test="${selector}"]`);
 });
 
-Cypress.Commands.add("login", (email, password) => {
-  Login.accessPage();
-  Login.fillTheForm(email, password);
-  Login.submitForm();
+Cypress.Commands.add("login", ({ email, password }) => {
+  cy.session(
+    email,
+    () => {
+      cy.visit("/login");
+      cy.getBySel("email").type(email);
+      cy.getBySel("password").type(`${password}{enter}`, { log: false });
+      cy.url().should("include", "/home");
+    },
+    {
+      validate: () => {
+        cy.getAllLocalStorage().then((localStorage) => {
+          expect(Object.values(localStorage)[0]).to.have.property("token");
+        });
+      },
+    },
+  );
 });
-
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
