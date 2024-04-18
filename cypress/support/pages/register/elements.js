@@ -4,5 +4,5 @@ export const ELEMENTS = {
   email: '[data-test="email"]',
   createPassword: '[data-test="pwd-create"]',
   confirmPassword: '[data-test="pwd-confirm"]',
-  btnRegister: '[data-test="Cadastrar"]',
+  btnRegister: '[data-test="btn-register"]',
 };

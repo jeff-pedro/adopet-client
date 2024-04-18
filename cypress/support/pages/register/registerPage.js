@@ -1,20 +1,15 @@
-import { ELEMENTS as el } from "./elements";
+const el = require("./elements").ELEMENTS;
 
 class Register {
   accessPage() {
-    cy.visit("http://localhost:3000/");
-    cy.get(el.registerPage).click();
+    cy.visit("/cadastrar");
   }
 
-  fillTheForm(name, email, password, passwordConfirm) {
+  sendForm(name, email, password) {
     cy.get(el.name).type(name);
     cy.get(el.email).type(email);
     cy.get(el.createPassword).type(password);
-    cy.get(el.confirmPassword).type(passwordConfirm);
-  }
-
-  submit() {
-    cy.get(el.btnRegister).click();
+    cy.get(el.confirmPassword).type(`${password}{enter}`);
   }
 }
 
