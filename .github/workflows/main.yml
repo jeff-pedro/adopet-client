@@ -18,6 +18,8 @@ jobs:
       adopet-api:
         image: jeffersonps/adopet-api:latest
         options: --name adopet-api
+        ports:
+          - 9000:9000
         env:
           NODE_ENV: development
           POSTGRES_USER: postgres
@@ -29,10 +31,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Test docker
-        run: docker ps
-
-      - name: Sequelize
+      - name: Migrate tables to database
         run: docker exec adopet-api npx sequelize-cli db:migrate
 
       - name: Cypress run
