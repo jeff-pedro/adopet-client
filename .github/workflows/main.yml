@@ -34,7 +34,7 @@ jobs:
       - name: Sequelize
         run: docker exec $ADOPET_API npx sequelize-cli db:migrate
         env:
-          ADOPET_API: adpet-api
+          ADOPET_API: adopet-api
 
       # - name: Cypress run
       #   uses: cypress-io/github-action@v6
