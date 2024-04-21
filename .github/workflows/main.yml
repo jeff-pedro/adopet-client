@@ -31,6 +31,9 @@ jobs:
       - name: Test docker
         run: docker ps
 
+      - name: Sequelize
+        run: docker exec adopet-api npx sequelize-cli db:migrate
+
       # - name: Cypress run
       #   uses: cypress-io/github-action@v6
       #   with:
