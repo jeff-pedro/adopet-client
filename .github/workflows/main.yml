@@ -32,7 +32,7 @@ jobs:
         run: docker ps
 
       - name: Sequelize
-        run: docker exec adopet-api npx sequelize-cli db:migrate
+        run: docker exec jeffersonps/adopet-api:latest npx sequelize-cli db:migrate
 
       # - name: Cypress run
       #   uses: cypress-io/github-action@v6
