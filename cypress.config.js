@@ -5,6 +5,7 @@ const {
 } = require("./scripts/generateSeedUsers");
 
 module.exports = defineConfig({
+  projectId: "8jd3re",
   e2e: {
     baseUrl: "http://localhost:3000",
     setupNodeEvents(on, config) {
