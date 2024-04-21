@@ -17,6 +17,7 @@ jobs:
 
       adopet-api:
         image: jeffersonps/adopet-api:latest
+        options: --name adopet-api
         env:
           NODE_ENV: development
           POSTGRES_USER: postgres
@@ -31,10 +32,11 @@ jobs:
       - name: Test docker
         run: docker ps
 
+      - name: Teste
+        run: echo
+
       - name: Sequelize
-        run: docker exec $ADOPET_API npx sequelize-cli db:migrate
-        env:
-          ADOPET_API: adopet-api
+        run: docker exec adopet-api npx sequelize-cli db:migrate
 
       # - name: Cypress run
       #   uses: cypress-io/github-action@v6
