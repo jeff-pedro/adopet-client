@@ -32,15 +32,12 @@ jobs:
       - name: Test docker
         run: docker ps
 
-      - name: Teste
-        run: echo
-
       - name: Sequelize
         run: docker exec adopet-api npx sequelize-cli db:migrate
 
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v6
-      #   with:
-      #     build: npm run build
-      #     start: npm start
-      #     browser: chrome
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npm start
+          browser: chrome
