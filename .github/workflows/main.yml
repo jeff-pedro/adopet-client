@@ -29,16 +29,8 @@ jobs:
           if-no-files-found: error
           path: build
 
-  ui-chrome-tests:
-    timeout-minutes: 15
+  startup-api:
     runs-on: ubuntu-latest
-    # container: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
-    needs: install
-    strategy:
-      fail-fast: false
-      # matrix:
-      # containers: [1, 2]
-
     services:
       db:
         image: postgres
@@ -50,7 +42,7 @@ jobs:
 
       adopet-api:
         image: jeffersonps/adopet-api:latest
-        options: sh "npx sequelize-cli db:migrate"
+        options: --name adopet-api
         ports:
           - 9000:9000
         env:
@@ -59,6 +51,44 @@ jobs:
           POSTGRES_PASSWORD: secret
           POSTGRES_DB: adopet_dev
           POSTGRES_HOST: db
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Migrate tables to database
+        run: docker exec adopet-api npx sequelize-cli db:migrate
+
+  ui-chrome-tests:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
+    needs: [install, startup-api]
+    strategy:
+      fail-fast: false
+      # matrix:
+      # containers: [1, 2]
+
+    # services:
+    #   db:
+    #     image: postgres
+    #     env:
+    #       POSTGRES_DB: adopet_dev
+    #       POSTGRES_PASSWORD: secret
+    #     ports:
+    #       - 5432:5432
+
+    #   adopet-api:
+    #     image: jeffersonps/adopet-api:latest
+    #     options: --name adopet-api
+    #     ports:
+    #       - 9000:9000
+    #     env:
+    #       NODE_ENV: development
+    #       POSTGRES_USER: postgres
+    #       POSTGRES_PASSWORD: secret
+    #       POSTGRES_DB: adopet_dev
+    #       POSTGRES_HOST: db
 
     steps:
       - name: Checkout
