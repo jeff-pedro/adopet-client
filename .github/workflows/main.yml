@@ -1,14 +1,43 @@
-name: Cypress Test
+name: Cypress Tests
 
-on: push
+on:
+  push:
 
 jobs:
-  cypress-run:
+  install:
     runs-on: ubuntu-latest
+    container: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v6
+        with:
+          runTests: false
+          build: npm run build
+
+      # report machine parameters
+      - run: npx cypress info
+      - run: node -p 'os.cpus()'
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
+  ui-chrome-tests:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
+    needs: install
     strategy:
-      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+      fail-fast: false
       matrix:
-        containers: [1, 2] # Uses 2 parallel instances
+        containers: [1, 2]
 
     services:
       db:
@@ -38,18 +67,23 @@ jobs:
       - name: Migrate tables to database
         run: docker exec adopet-api npx sequelize-cli db:migrate
 
-      - name: Cypress run
+      - name: Download the build folder
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
+
+      - name: UI Tests - Chrome
         uses: cypress-io/github-action@v6
         with:
-          build: npm run build
           start: npm start
-          wait-on: "http://localhost:3000" # Waits for above
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
           browser: chrome
           record: true
-          parallel: true # Runs test in parallel using settings above
+          parallel: true
+          group: "UI - Chrome"
         env:
-          # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
-          # in GitHub repo → Settings → Secrets → Actions
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
