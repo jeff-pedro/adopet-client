@@ -36,8 +36,8 @@ jobs:
     needs: install
     strategy:
       fail-fast: false
-      matrix:
-        containers: [1, 2]
+      # matrix:
+      # containers: [1, 2]
 
     services:
       db:
@@ -50,7 +50,7 @@ jobs:
 
       adopet-api:
         image: jeffersonps/adopet-api:latest
-        options: npx sequelize-cli db:migrate
+        options: sh "npx sequelize-cli db:migrate"
         ports:
           - 9000:9000
         env:
