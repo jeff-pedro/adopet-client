@@ -59,7 +59,7 @@ jobs:
           record: true
           parallel: true
           group: "UI - Chrome"
-          spec: cypress/e2e/login-page.cy.js
+          # spec: cypress/e2e/login-page.cy.js
         env:
           CYPRESS_api_server: https://staging.adopet.api.sapituca.site
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
