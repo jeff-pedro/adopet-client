@@ -52,7 +52,7 @@ jobs:
       - name: UI Tests - Chrome
         uses: cypress-io/github-action@v6
         with:
-          start: NODEnpm start
+          start: npm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
