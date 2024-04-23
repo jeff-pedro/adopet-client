@@ -1,12 +1,14 @@
 name: Cypress Tests
 
 on:
-  push:
+  pull_request:
 
 jobs:
   install:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
+    container:
+      image: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
+      options: --user 1001
 
     steps:
       - name: Checkout
@@ -20,6 +22,7 @@ jobs:
 
       # report machine parameters
       - run: npx cypress info
+      - run: node --version
       - run: node -p 'os.cpus()'
 
       - name: Save build folder
@@ -32,7 +35,9 @@ jobs:
   ui-chrome-tests:
     timeout-minutes: 15
     runs-on: ubuntu-latest
-    container: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
+    container:
+      image: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
+      options: --user 1001
     needs: install
     strategy:
       fail-fast: false
@@ -60,7 +65,6 @@ jobs:
           parallel: true
           group: "UI - Chrome"
           # spec: cypress/e2e/login-page.cy.js
-          # spec: cypress/e2e/home-page.cy.js
 
         env:
           CYPRESS_api_server: https://staging.adopet.api.sapituca.site
