@@ -11,7 +11,7 @@ describe("Message Page", () => {
 
     // create a new user via API
     cy.get("@currentUser").then((user) => {
-      cy.request("POST", `${Cypress.env("api_server")}/tutors`, {
+      cy.request("POST", `${Cypress.env("api_server")}/api/tutors`, {
         name: user.name,
         email: user.email,
         password: user.password,
