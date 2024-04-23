@@ -34,10 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     container: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
     needs: install
-    # strategy:
-    #   fail-fast: false
-    # matrix:
-    # containers: [1, 2]
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
 
     steps:
       - name: Checkout
