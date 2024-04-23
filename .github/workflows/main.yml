@@ -36,8 +36,8 @@ jobs:
     needs: install
     strategy:
       fail-fast: false
-      # matrix:
-      #   containers: [1, 2]
+      matrix:
+        containers: [1, 2]
 
     steps:
       - name: Checkout
