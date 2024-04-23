@@ -11,7 +11,7 @@ describe("Login Page", () => {
 
     // create a new user via API
     cy.get("@currentUser").then((user) => {
-      cy.request("POST", `${Cypress.env("api_server")}/api/tutors`, {
+      cy.request("POST", `http://${Cypress.env("api_server")}/api/tutors`, {
         name: user.name,
         email: user.email,
         password: user.password,
