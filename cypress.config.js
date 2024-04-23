@@ -6,6 +6,9 @@ const {
 
 module.exports = defineConfig({
   projectId: "8jd3re",
+  env: {
+    api_server: "http://localhost:9000/api",
+  },
   e2e: {
     baseUrl: "http://localhost:3000",
     setupNodeEvents(on, config) {
