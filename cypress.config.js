@@ -7,7 +7,7 @@ const {
 module.exports = defineConfig({
   projectId: "8jd3re",
   env: {
-    api_server: "localhost:9000",
+    api_server: "http://localhost:9000",
   },
   e2e: {
     baseUrl: "http://localhost:3000",
