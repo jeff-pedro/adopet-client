@@ -52,14 +52,14 @@ jobs:
       - name: UI Tests - Chrome
         uses: cypress-io/github-action@v6
         with:
-          start: npm start
+          start: NODEnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
           record: true
           parallel: true
           group: "UI - Chrome"
-          spec: cypress/e2e/register-page.cy.js
+          # spec: cypress/e2e/register-page.cy.js
         env:
           CYPRESS_api_server: staging.adopet.api.sapituca.site
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
