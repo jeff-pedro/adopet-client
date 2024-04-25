@@ -13,6 +13,7 @@ module.exports = defineConfig({
   },
   e2e: {
     baseUrl: "http://localhost:3000",
+    specPattern: "cypress/tests/**/*.spec.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
       const { apiUrl } = config.env;
 
@@ -25,7 +26,15 @@ module.exports = defineConfig({
             user,
           );
 
-          return data ? user : false;
+          return data;
+        },
+
+        async "users:seed"() {
+          const user = createSeedUsers(1)[0];
+
+          await axios.post(`https://${apiUrl}/api/tutors`, user);
+
+          return user;
         },
 
         createUser() {

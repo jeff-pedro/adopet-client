@@ -1,13 +1,11 @@
-const Register = require("../support/pages/register/registerPage");
-const el = require("../support/pages/register/elements").ELEMENTS;
+const Register = require("../../support/pages/register/registerPage");
+const el = require("../../support/pages/register/elements").ELEMENTS;
 
 describe("Register Page", () => {
   beforeEach(function () {
-    cy.task("seedUsers", 1);
-
-    // create a new user seed file
-    cy.fixture("seedUser").then((users) => {
-      this.users = users;
+    cy.database("users").then((user) => {
+      cy.login(user.email, user.password);
+      this.user = user;
     });
 
     Register.accessPage();
@@ -15,17 +13,15 @@ describe("Register Page", () => {
 
   context("Happy Path 🥳", function () {
     it(`fills out a form and register one user`, function () {
-      this.users.forEach((user) => {
-        Register.sendForm(user);
-      });
+      Register.sendForm(this.user);
     });
   });
 
   context("Unhappy Path 😥", function () {
     it("provides an existing user", function () {
-      Register.sendForm(this.users[0]);
+      Register.sendForm(this.user);
       Register.accessPage();
-      Register.sendForm(this.users[0]);
+      Register.sendForm(this.user);
 
       cy.contains("Este e-mail já está em uso").should("be.visible");
     });
@@ -42,9 +38,9 @@ describe("Register Page", () => {
     });
 
     it("enter a password with incorrect validation rules", function () {
-      this.users[0].password = 123;
+      this.user.password = 123;
 
-      Register.sendForm(this.users[0]);
+      Register.sendForm(this.user);
 
       cy.contains(
         "A senha deve conter pelo menos uma letra maiúscula, um número e ter entre 6 e 15 caracteres",
@@ -52,7 +48,7 @@ describe("Register Page", () => {
     });
 
     it("types a password that does not match the password confirmation", function () {
-      const { name, email, password } = this.users[0];
+      const { name, email, password } = this.user;
 
       cy.get(el.name).type(name);
       cy.get(el.email).type(email);

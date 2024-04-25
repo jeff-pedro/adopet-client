@@ -4,8 +4,8 @@ describe("Home Page", () => {
   });
 
   it("should show login button in the header section", () => {
-    cy.getBySel("user-link").should("exist").click();
-    cy.getBySel("login-button").should("exist").click();
+    cy.getBySel("sidenav-user").should("exist").click();
+    cy.getBySel("sidenav-user-login").should("exist").click();
     cy.url().should("include", "/login");
   });
 
