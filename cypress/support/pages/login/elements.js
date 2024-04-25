@@ -1,9 +1,9 @@
 export const ELEMENTS = {
-  login: '[data-test="login-form"]',
-  email: '[data-test="email"]',
-  password: '[data-test="password"]',
-  btnLogin: '[data-test="btn-login"]',
-  forgotPasword: '[data-test="forgot"]',
-  registerPage: '[data-test="register-form"]',
+  email: '[data-test="login-email"]',
+  password: '[data-test="login-password"]',
+  btnLogin: '[data-test="login-submit"]',
+  forgotPasword: '[data-test="login-forgot"]',
+  registerPage: '[data-test="signup"]',
+  loginPage: '[data-test="login"]',
   homePage: '[data-test="home"]',
 };
