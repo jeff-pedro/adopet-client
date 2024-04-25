@@ -67,7 +67,7 @@ jobs:
           spec: cypress/e2e/auth.cy.js
 
         env:
-          CYPRESS_api_server: staging.adopet.api.sapituca.site
+          CYPRESS_apiUrl: staging.adopet.api.sapituca.site
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # overwrite commit message sent to Cypress Cloud
