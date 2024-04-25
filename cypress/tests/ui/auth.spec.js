@@ -78,7 +78,7 @@ describe("User Authentication", () => {
     cy.getBySel("message-name-input").type(name);
     cy.getBySel("message-phone-input").type(phone);
     cy.getBySel("message-petName-input").type("Chewbacca");
-    cy.getBySel("message-msg-input").type("I gotta adopt this cute pet 😍");
+    cy.getBySel("message-text-input").type("I gotta adopt this cute pet 😍");
     cy.getBySel("message-submit").click();
 
     // Update User Profile
