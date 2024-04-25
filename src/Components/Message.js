@@ -86,7 +86,7 @@ const Message = () => {
             <input
               id="name"
               type="text"
-              data-test="message-name"
+              data-test="message-name-input"
               {...register("name", {
                 required: "É necessário informar seu nome",
                 maxLength: {
@@ -102,7 +102,7 @@ const Message = () => {
             <input
               type="tel"
               id="phone"
-              data-test="message-phone"
+              data-test="message-phone-input"
               {...register("phone", {
                 required: "Informe um número de telefone",
                 pattern: /\(?[1-9]{2}\)?\s?9?[0-9]{8}/,
@@ -120,7 +120,7 @@ const Message = () => {
             <input
               id="petName"
               type="text"
-              data-test="message-petName"
+              data-test="message-petName-input"
               {...register("petName", {
                 required: "É necessário informar o nome do animal",
                 maxLength: {
@@ -140,7 +140,7 @@ const Message = () => {
               id="msg"
               cols="30"
               rows="10"
-              data-test="message-msg"
+              data-test="message-text-input"
               {...register("msg", {
                 required: "É necessário escrever uma mensagem",
                 maxLength: {
@@ -168,7 +168,7 @@ const Message = () => {
             <input
               type="image"
               id="userPic"
-              data-test="profile-photo"
+              data-test="profile-photo-input"
               src={userData.profilePictureUrl}
               alt="Usuário logado"
             />
@@ -178,7 +178,7 @@ const Message = () => {
             <input
               id="name"
               type="text"
-              data-test="profile-name"
+              data-test="profile-name-input"
               {...register("name", {
                 required: "É necessário informar seu nome",
                 maxLength: {
@@ -189,13 +189,20 @@ const Message = () => {
               placeholder="Insira seu nome completo"
               defaultValue={userData.name}
             />
-            {errors.name && <p className="error">{errors.name.message}</p>}
+            {errors.name && (
+              <p
+                data-test="user-profile-name-input-helper-text"
+                className="error"
+              >
+                {errors.name.message}
+              </p>
+            )}
 
             <label htmlFor="phone">Telefone</label>
             <input
               type="tel"
               id="phone"
-              data-test="profile-phone"
+              data-test="profile-phone-input"
               {...register("phone", {
                 required: "Informe um número de telefone",
                 pattern: /\(?[1-9]{2}\)?\s?9?[0-9]{8}/,
@@ -204,7 +211,10 @@ const Message = () => {
               defaultValue={userData.phone}
             />
             {errors.phone && (
-              <p className="error">
+              <p
+                data-test="user-profile-phone-input-helper-text"
+                className="error"
+              >
                 {errors.phone.message ||
                   "Por favor, verifique o número digitado"}
               </p>
@@ -214,7 +224,7 @@ const Message = () => {
             <input
               type="text"
               id="city"
-              data-test="profile-city"
+              data-test="profile-city-input"
               {...register("city", {
                 required: "Informe a cidade em que você mora",
               })}
@@ -227,7 +237,7 @@ const Message = () => {
               spellCheck="false"
               name="about"
               id="about"
-              data-test="profile-about"
+              data-test="profile-about-input"
               {...register("about")}
               cols="30"
               rows="8"

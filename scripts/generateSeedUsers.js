@@ -5,7 +5,11 @@ const { fakerPT_BR: faker } = require("@faker-js/faker");
 const createFakeUser = () => ({
   name: faker.person.fullName(),
   email: faker.internet.email().toLowerCase(),
-  password: faker.internet.password(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/),
+  password: faker.internet.password({
+    length: 15,
+    prefix: "9",
+    pattern: /[\w]/,
+  }),
   phone: faker.helpers.fromRegExp("([1-9]{2})[9?][1-9]{8}"),
   city: faker.location.city(),
   about: faker.person.bio(),

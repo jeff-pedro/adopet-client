@@ -4,7 +4,7 @@ describe("Initial Page", () => {
   });
 
   it("redirects the 'Cadastrar' link to the registration page", () => {
-    cy.getBySel("register-link").should("exist").click();
+    cy.getBySel("signup-link").should("exist").click();
     cy.url().should("include", "/cadastro");
   });
 
@@ -14,12 +14,12 @@ describe("Initial Page", () => {
   });
 
   it("redirects the home icon to the initial page", () => {
-    cy.getBySel("initial-link").should("exist").click();
+    cy.getBySel("sidenav-initial").should("exist").click();
     cy.url().should("include", "/");
   });
 
   it("redirects the message icon to the initial page", () => {
-    cy.getBySel("message-link").should("exist").click();
+    cy.getBySel("sidenav-message").should("exist").click();
     cy.url().should("include", "/");
   });
 

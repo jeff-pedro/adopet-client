@@ -72,31 +72,31 @@ describe("User Authentication", () => {
     cy.contains("Nenhum amiguinho disponível! 😢");
 
     // Send Message
-    cy.getBySel("message-link").click();
+    cy.getBySel("sidenav-message").click();
     cy.location("pathname").should("equal", "/mensagem");
 
-    cy.getBySel("message-name").type(name);
-    cy.getBySel("message-phone").type(phone);
-    cy.getBySel("message-petName").type("Chewbacca");
-    cy.getBySel("message-msg").type("I gotta adopt this cute pet 😍");
+    cy.getBySel("message-name-input").type(name);
+    cy.getBySel("message-phone-input").type(phone);
+    cy.getBySel("message-petName-input").type("Chewbacca");
+    cy.getBySel("message-text-input").type("I gotta adopt this cute pet 😍");
     cy.getBySel("message-submit").click();
 
     // Update User Profile
-    cy.getBySel("user-button").should("exist").click();
-    cy.getBySel("view-profile").should("exist").click();
+    cy.getBySel("sidenav-user").should("exist").click();
+    cy.getBySel("sidenav-user-profile").should("exist").click();
     cy.location("pathname").should("equal", "/perfil");
 
-    cy.getBySel("profile-name").type(name);
-    cy.getBySel("profile-phone").type(phone);
-    cy.getBySel("profile-city").type(city);
-    cy.getBySel("profile-about").type(about);
+    cy.getBySel("profile-name-input").type(name);
+    cy.getBySel("profile-phone-input").type(phone);
+    cy.getBySel("profile-city-input").type(city);
+    cy.getBySel("profile-about-input").type(about);
 
     cy.getBySel("profile-submit").click();
     cy.location("pathname").should("equal", "/home");
 
     // Logout User
-    cy.getBySel("user-button").click();
-    cy.getBySel("logout-button").click();
+    cy.getBySel("sidenav-user").click();
+    cy.getBySel("sidenav-user-logout").click();
     cy.location("pathname").should("equal", "/");
 
     cy.getAllLocalStorage().then((localStorage) => {

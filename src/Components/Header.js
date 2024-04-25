@@ -45,16 +45,20 @@ const Header = () => {
               className="header__user"
               src={loggedUser}
               alt="Usuário"
-              data-test="user-button"
+              data-test="sidenav-user"
             />
           </Menu.Button>
           <Menu.Items className="menu__content">
-            <a className="button" href="/perfil" data-test="view-profile">
+            <a
+              className="button"
+              href="/perfil"
+              data-test="sidenav-user-profile"
+            >
               Ver Perfil
             </a>
             <Button
               handleClick={handleLogout}
-              dataTest="logout-button"
+              dataTest="sidenav-user-logout"
               children="Logout"
             />
           </Menu.Items>
@@ -68,11 +72,11 @@ const Header = () => {
               className="header__user"
               src={userPic}
               alt="Usuário"
-              data-test="user-link"
+              data-test="sidenav-user"
             />
           </Menu.Button>
           <Menu.Items className="menu__content">
-            <a className="button" href="/login" data-test="login-button">
+            <a className="button" href="/login" data-test="sidenav-user-login">
               Login
             </a>
           </Menu.Items>
@@ -94,14 +98,14 @@ const Header = () => {
           <Link
             className="header__home"
             aria-label="Tela inicial"
-            data-test="initial-link"
+            data-test="sidenav-initial"
             to="/"
           />
           <Link
             className="header__message"
             to="/mensagem"
             aria-label="Ir para Mensagens"
-            data-test="message-link"
+            data-test="sidenav-message"
           />
         </div>
         {userMenu}

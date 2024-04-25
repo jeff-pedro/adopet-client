@@ -1,7 +1,6 @@
 name: Cypress Tests
 
-on:
-  pull_request:
+on: [push]
 
 jobs:
   install:
@@ -64,14 +63,14 @@ jobs:
           record: true
           parallel: true
           group: "UI - Chrome"
-          spec: cypress/e2e/auth.cy.js
+          # spec: cypress/tests/ui/auth.spec.js
 
         env:
           CYPRESS_apiUrl: staging.adopet.api.sapituca.site
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # overwrite commit message sent to Cypress Cloud
-          COMMIT_INFO_MESSAGE: ${{github.event.pull_request.title}}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
           # re-enable PR comment bot
-          COMMIT_INFO_SHA: ${{github.event.pull_request.head.sha}}
+          COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
