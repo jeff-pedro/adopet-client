@@ -19,7 +19,7 @@ describe("User Journey", () => {
 
       cy.intercept({
         method: "POST",
-        url: "http://localhost:9000/api/tutors",
+        url: `${Cypress.env("api_server")}/api/tutors`,
       }).as("registered");
 
       // Fill out the form and register a user

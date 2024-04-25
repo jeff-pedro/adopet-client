@@ -86,7 +86,7 @@ const Message = () => {
             <input
               id="name"
               type="text"
-              data-test="name"
+              data-test="message-name"
               {...register("name", {
                 required: "É necessário informar seu nome",
                 maxLength: {
@@ -102,7 +102,7 @@ const Message = () => {
             <input
               type="tel"
               id="phone"
-              data-test="phone"
+              data-test="message-phone"
               {...register("phone", {
                 required: "Informe um número de telefone",
                 pattern: /\(?[1-9]{2}\)?\s?9?[0-9]{8}/,
@@ -120,7 +120,7 @@ const Message = () => {
             <input
               id="petName"
               type="text"
-              data-test="petName"
+              data-test="message-petName"
               {...register("petName", {
                 required: "É necessário informar o nome do animal",
                 maxLength: {
@@ -140,7 +140,7 @@ const Message = () => {
               id="msg"
               cols="30"
               rows="10"
-              data-test="message"
+              data-test="message-msg"
               {...register("msg", {
                 required: "É necessário escrever uma mensagem",
                 maxLength: {
@@ -153,7 +153,7 @@ const Message = () => {
             />
             {errors.msg && <p className="error">{errors.msg.message}</p>}
 
-            <Button type="submit" children="Enviar" dataTest="submit-message" />
+            <Button type="submit" children="Enviar" dataTest="message-submit" />
           </form>
         </>
       ) : (
@@ -168,7 +168,7 @@ const Message = () => {
             <input
               type="image"
               id="userPic"
-              data-test="photo"
+              data-test="profile-photo"
               src={userData.profilePictureUrl}
               alt="Usuário logado"
             />
@@ -178,7 +178,7 @@ const Message = () => {
             <input
               id="name"
               type="text"
-              data-test="name"
+              data-test="profile-name"
               {...register("name", {
                 required: "É necessário informar seu nome",
                 maxLength: {
@@ -195,7 +195,7 @@ const Message = () => {
             <input
               type="tel"
               id="phone"
-              data-test="phone"
+              data-test="profile-phone"
               {...register("phone", {
                 required: "Informe um número de telefone",
                 pattern: /\(?[1-9]{2}\)?\s?9?[0-9]{8}/,
@@ -214,7 +214,7 @@ const Message = () => {
             <input
               type="text"
               id="city"
-              data-test="city"
+              data-test="profile-city"
               {...register("city", {
                 required: "Informe a cidade em que você mora",
               })}
@@ -227,7 +227,7 @@ const Message = () => {
               spellCheck="false"
               name="about"
               id="about"
-              data-test="about"
+              data-test="profile-about"
               {...register("about")}
               cols="30"
               rows="8"
@@ -235,7 +235,7 @@ const Message = () => {
               defaultValue={userData.about}
             />
 
-            <Button type="submit" children="Salvar" dataTest="submit-profile" />
+            <Button type="submit" children="Salvar" dataTest="profile-submit" />
           </form>
         </>
       )}

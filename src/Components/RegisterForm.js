@@ -75,7 +75,7 @@ const RegisterForm = () => {
         <input
           id="name"
           type="text"
-          data-test="name"
+          data-test="signup-name"
           {...register("name", {
             required: "É necessário informar seu nome",
             maxLength: {
@@ -91,7 +91,7 @@ const RegisterForm = () => {
         <input
           id="email"
           type="email"
-          data-test="email"
+          data-test="signup-email"
           {...register("email", {
             required: "É necessário informar um endereço de email",
             pattern:
@@ -116,7 +116,7 @@ const RegisterForm = () => {
           />
           <input
             id="pass-create"
-            data-test="pwd-create"
+            data-test="signup-pass-create"
             type={visiblePassword.password ? "text" : "password"}
             {...register("password", {
               required: "Crie uma senha",
@@ -140,7 +140,7 @@ const RegisterForm = () => {
           />
           <input
             id="pass-confirm"
-            data-test="pwd-confirm"
+            data-test="signup-pass-confirm"
             type={visiblePassword.passwordRetry ? "text" : "password"}
             {...register("confirm_password", {
               required: "Repita a senha criada acima",
@@ -157,7 +157,7 @@ const RegisterForm = () => {
           <p className="error">{errors.confirm_password.message}</p>
         )}
 
-        <Button type="submit" children="Cadastrar" dataTest="btn-register" />
+        <Button type="submit" children="Cadastrar" dataTest="signup-submit" />
       </form>
     </motion.section>
   );

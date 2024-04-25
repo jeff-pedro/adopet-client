@@ -31,11 +31,7 @@ const Home = () => {
           Ver pets disponíveis para adoção
         </Link>
         <div>
-          <a
-            className="initial__link"
-            href="/cadastro"
-            data-test="register-link"
-          >
+          <a className="initial__link" href="/cadastro" data-test="signup-link">
             Cadastrar
           </a>
           <span style={{ fontSize: 14, padding: "0 1rem", color: "#fff" }}>

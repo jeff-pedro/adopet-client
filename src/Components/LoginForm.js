@@ -61,7 +61,7 @@ const LoginForm = () => {
         <input
           id="email"
           type="email"
-          data-test="email"
+          data-test="login-email"
           {...register("email", {
             required: "É necessário informar um endereço de email",
             pattern:
@@ -74,11 +74,12 @@ const LoginForm = () => {
             {errors.email.message || "Por favor, verifique o email digitado"}
           </p>
         )}
-        {formState.isSubmitted && isSubmitted.includes("Error:") && (
-          <p className="error" data-test="server-error-message">
-            {isSubmitted.split(": ")[1]}
-          </p>
-        )}
+        {formState.isSubmitted &&
+          isSubmitted.includes("Error: This user not exist.") && (
+            <p className="error" data-test="server-error-message">
+              {"Email ou senha inválido"}
+            </p>
+          )}
 
         <label htmlFor="pass">Senha</label>
         <span>
@@ -86,7 +87,7 @@ const LoginForm = () => {
           <input
             id="pass"
             type="password"
-            data-test="password"
+            data-test="login-password"
             {...register("password", {
               required: "Insira sua senha",
               pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
@@ -101,16 +102,12 @@ const LoginForm = () => {
           </p>
         )}
 
-        <a className="register__forgot" href="#" data-test="forgot">
+        <a className="register__forgot" href="#" data-test="login-forgot">
           Esqueci minha senha
         </a>
-        <Button type="submit" children="Entrar" dataTest="btn-login" />
+        <Button type="submit" children="Entrar" dataTest="login-submit" />
         <p>Ainda não tem conta?</p>
-        <a
-          href="/cadastro"
-          className="register__newUser"
-          data-test="register-form"
-        >
+        <a href="/cadastro" className="register__newUser" data-test="signup">
           Faça seu cadastro
         </a>
       </form>
