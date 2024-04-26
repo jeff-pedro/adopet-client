@@ -55,7 +55,7 @@ Subir o [Adopet API](https://github.com/jeff-pedro/adopet-api/).
 Executar a aplicação.
 
 ```shell
-npm start
+REACT_APP_DEV_API_URL="http://localhost:9000" npm start
 ```
 
 ### 🧪 Testes

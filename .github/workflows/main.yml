@@ -26,7 +26,7 @@ jobs:
           runTests: false
           build: npm run build
 
-      # report machine parameterswith t
+      # report machine parameters
       - run: npx cypress info
       - run: node --version
       - run: node -p 'os.cpus()'
@@ -72,8 +72,7 @@ jobs:
           record: true
           parallel: true
           group: "UI - Chrome"
-          # spec: cypress/tests/ui/*
-          spec: cypress/tests/ui/message.spec.js
+          spec: cypress/tests/ui/*
           config-file: cypress.config.js
         env:
           REACT_APP_DEV_API_URL: ${{ env.API_URL }}
