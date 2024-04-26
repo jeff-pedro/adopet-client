@@ -3,7 +3,7 @@ const el = require("../../support/pages/register/elements").ELEMENTS;
 
 describe("Register Page", () => {
   beforeEach(function () {
-    cy.database("users").then((user) => {
+    cy.database("users", null, { timeout: 50000 }).then((user) => {
       cy.login(user.email, user.password);
       this.user = user;
     });
