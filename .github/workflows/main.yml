@@ -26,7 +26,7 @@ jobs:
           runTests: false
           build: npm run build
 
-      # report machine parameters
+      # report machine parameterswith t
       - run: npx cypress info
       - run: node --version
       - run: node -p 'os.cpus()'
@@ -65,7 +65,7 @@ jobs:
       - name: UI Tests - Chrome
         uses: cypress-io/github-action@v6
         with:
-          start: REACT_APP_DEV_API_URL=${{ env.API_URL }} npm start
+          start: REACT_APP_DEV_API_URL="${{ env.API_URL }}" npm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
