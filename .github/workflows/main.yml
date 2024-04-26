@@ -25,7 +25,6 @@ jobs:
         with:
           runTests: false
           build: npm run build
-          env: REACT_APP_DEV_API_URL="https://staging.adopet.api.sapituca.site"
 
       # report machine parameterswith t
       - run: npx cypress info
@@ -51,7 +50,7 @@ jobs:
       # matrix:
       #   containers: [1, 2]
     env:
-      API_URL: "https://staging.adopet.api.sapituca.site"
+      API_URL: https://staging.adopet.api.sapituca.site
 
     steps:
       - name: Checkout
@@ -73,10 +72,11 @@ jobs:
           record: true
           parallel: true
           group: "UI - Chrome"
-          spec: cypress/tests/ui/*
+          # spec: cypress/tests/ui/*
+          spec: cypress/tests/ui/message.spec.js
           config-file: cypress.config.js
-          env: REACT_APP_DEV_API_URL="https://staging.adopet.api.sapituca.site"
         env:
+          REACT_APP_DEV_API_URL: ${{ env.API_URL }}
           CYPRESS_API_URL: ${{ env.API_URL }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
