@@ -1,7 +1,7 @@
 describe("User Profile", () => {
   beforeEach(function () {
     // seed database and login
-    cy.database("users").then((user) => {
+    cy.database("users", null, { timeout: 50000 }).then((user) => {
       cy.login(user.email, user.password);
     });
 
