@@ -15,8 +15,6 @@ jobs:
     container:
       image: cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
       options: --user 1001
-    env:
-      API_URL: "https://staging.adopet.api.sapituca.site"
 
     steps:
       - name: Checkout
@@ -26,7 +24,8 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           runTests: false
-          build: REACT_APP_DEV_API_URL="${{ env.API_URL }}" npm run build
+          build: npm run build
+          env: REACT_APP_DEV_API_URL="https://staging.adopet.api.sapituca.site"
 
       # report machine parameterswith t
       - run: npx cypress info
@@ -67,7 +66,7 @@ jobs:
       - name: UI Tests - Chrome
         uses: cypress-io/github-action@v6
         with:
-          start: REACT_APP_DEV_API_URL=${{ env.API_URL }} npm start
+          start: npm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
@@ -76,6 +75,7 @@ jobs:
           group: "UI - Chrome"
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
+          env: REACT_APP_DEV_API_URL="https://staging.adopet.api.sapituca.site"
         env:
           CYPRESS_API_URL: ${{ env.API_URL }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
