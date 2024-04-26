@@ -26,7 +26,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           runTests: false
-          build: REACT_APP_DEV_API_URL=${{ env.API_URL }} npm run build
+          build: REACT_APP_DEV_API_URL="${{ env.API_URL }}" npm run build
 
       # report machine parameterswith t
       - run: npx cypress info
