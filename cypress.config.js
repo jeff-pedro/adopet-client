@@ -21,10 +21,7 @@ module.exports = defineConfig({
         async "db:seed"() {
           const user = createSeedUsers(1)[0];
 
-          const { data } = await axios.post(
-            `${apiUrl}/api/tutors`,
-            user,
-          );
+          const { data } = await axios.post(`${apiUrl}/api/tutors`, user);
 
           return data;
         },
