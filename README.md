@@ -5,7 +5,7 @@
 > **Adopet** é uma empresa fictícia de adoção de animais que foi usado como aplicação front-end para integração de uma API RESTful durante um Challenge Back-End.
 
 <a>Potuguese</a> -
-<a href="./docs/en/README_en.md">English</a>
+<a href="./docs/en/README.md">English</a>
 
 </div>
 
@@ -33,7 +33,11 @@
 
 ## 🐾 AdoPet
 
-🧩 [adopet.sapituca.site](http://adopet.sapituca.site/)
+- 🧩 [adopet.sapituca.site](http://adopet.sapituca.site/)
+
+## 🗂 Docs
+
+- [Wiki](https://github.com/jeff-pedro/adopet-api/wiki)
 
 ## ⚙️ Como usar o repositório
 
@@ -71,12 +75,6 @@ npm run cypress:open
 ```shell
 npm run build
 ```
-
-## 🔎 [Explorando o Adopet](./docs/pt-br/ADOPET.md)
-
-## 🔎 [Explorando a sessão de administração](./docs/pt-br/ADOPET-ADM.md)
-
-## 🔮 [Funcionalidade futuras](./docs/pt-br/DEV-FUTURO.md)
 
 ## ©️ Créditos
 

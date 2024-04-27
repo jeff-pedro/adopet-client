@@ -43,7 +43,6 @@ module.exports = defineConfig({
         },
 
         seedUsers(numberOfUsers) {
-          console.log(numberOfUsers);
           saveUsersSeed(numberOfUsers);
           return null;
         },

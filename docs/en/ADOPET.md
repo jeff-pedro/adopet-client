@@ -1,1 +1,0 @@
-[user journey video]

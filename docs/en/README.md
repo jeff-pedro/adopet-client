@@ -10,6 +10,7 @@
 </div>
 
 <div align="center" >
+  <a href='https://cloud.cypress.io/projects/8jd3re/runs' target='_blank'><img src="https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/8jd3re&style=for-the-badge&logo=cypress">
   <img src="https://img.shields.io/github/v/release/jeff-pedro/api-adopet?display_name=tag&include_prereleases&style=for-the-badge">
   <a href='https://eslint.org/' target='_blank'><img src="https://img.shields.io/badge/Code Style-eslint-ff69b4.svg?style=for-the-badge&logo=eslint">
   <a href='https://prettier.io/' target='_blank'><img src="https://img.shields.io/badge/Code Formatter-prettier-blue?style=for-the-badge&?style=flat-square&logo=prettier">
@@ -32,7 +33,11 @@
 
 ## 🐾 AdoPet
 
-🧩 [adopet.sapituca.site](http://adopet.sapituca.site/)
+- 🧩 [adopet.sapituca.site](http://adopet.sapituca.site/)
+
+## 🗂 Docs
+
+- [Wiki](https://github.com/jeff-pedro/adopet-api/wiki)
 
 ## ⚙️ How to use the repository
 
@@ -54,7 +59,7 @@ Run the [Adopet API](https://github.com/jeff-pedro/adopet-api/).
 Run the adopet front-end.
 
 ```shell
-npm start
+REACT_APP_DEV_API_URL="http://localhost:9000" npm start
 ```
 
 ### 🧪 Tests
@@ -70,12 +75,6 @@ npm run cypress:open
 ```shell
 npm run build
 ```
-
-## 🔎 [Exploring the Adopet](./ADOPET.md)
-
-## 🔎 [Exploring the admin section](./DEV-FUTURE.md)
-
-## 🔮 [Future features](./DEV-FUTURE.md)
 
 ## ©️ Credits
 
