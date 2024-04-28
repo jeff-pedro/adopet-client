@@ -2,18 +2,24 @@
 
 # 🐾 AdoPet: site de adoção de animais
 
-> **Adopet** é uma empresa fictícia de adoção de animais que foi usado como aplicação front-end para integração de uma API RESTful durante um Challenge Back-End.
-
-<a>Potuguese</a> -
-<a href="./docs/en/README_en.md">English</a>
-
-</div>
-
 <div align="center" >
   <a href='https://cloud.cypress.io/projects/8jd3re/runs' target='_blank'><img src="https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/8jd3re&style=for-the-badge&logo=cypress">
   <img src="https://img.shields.io/github/v/release/jeff-pedro/api-adopet?display_name=tag&include_prereleases&style=for-the-badge">
   <a href='https://eslint.org/' target='_blank'><img src="https://img.shields.io/badge/Code Style-eslint-ff69b4.svg?style=for-the-badge&logo=eslint">
   <a href='https://prettier.io/' target='_blank'><img src="https://img.shields.io/badge/Code Formatter-prettier-blue?style=for-the-badge&?style=flat-square&logo=prettier">
+</div>
+
+</br>
+
+> **Adopet** é uma empresa fictícia de adoção de animais que foi usado como aplicação front-end para integração de uma API RESTful durante um Challenge Back-End.
+
+  <p align="center">
+    <img style='width: 70%' alt="Adopet App" src="./docs/assets/img/adopet-readme-screenshot.png" />
+  </p>
+
+<a>Potuguese</a> -
+<a href="./docs/en/README.md">English</a>
+
 </div>
 
 ## 🤖 Tecnologias
@@ -33,7 +39,11 @@
 
 ## 🐾 AdoPet
 
-🧩 [adopet.sapituca.site](http://adopet.sapituca.site/)
+- 🧩 [adopet.sapituca.site](http://adopet.sapituca.site/)
+
+## 🗂 Docs
+
+- [Wiki](https://github.com/jeff-pedro/adopet-api/wiki)
 
 ## ⚙️ Como usar o repositório
 
@@ -71,12 +81,6 @@ npm run cypress:open
 ```shell
 npm run build
 ```
-
-## 🔎 [Explorando o Adopet](./docs/pt-br/ADOPET.md)
-
-## 🔎 [Explorando a sessão de administração](./docs/pt-br/ADOPET-ADM.md)
-
-## 🔮 [Funcionalidade futuras](./docs/pt-br/DEV-FUTURO.md)
 
 ## ©️ Créditos
 

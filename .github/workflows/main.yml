@@ -70,7 +70,7 @@ jobs:
           wait-on-timeout: 120
           browser: chrome
           record: true
-          parallel: true
+          # parallel: true
           group: "UI - Chrome"
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
