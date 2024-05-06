@@ -41,7 +41,7 @@ const RegisterForm = () => {
   const onSubmit = async (data) => {
     // call api
     try {
-      await api.post("/api/tutors", data);
+      await api.post("/api/users", data);
 
       alert("Usuário cadastrado com sucesso!");
     } catch (err) {

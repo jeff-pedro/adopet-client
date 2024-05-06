@@ -5,8 +5,8 @@ describe("User Profile", () => {
       cy.login(user.email, user.password);
     });
 
-    cy.intercept("GET", "/api/tutors/*").as("getUser");
-    cy.intercept("PUT", "/api/tutors/*").as("updateUser");
+    cy.intercept("GET", "/api/users/*").as("getUser");
+    cy.intercept("PUT", "/api/users/*").as("updateUser");
 
     // navigate to profile form
     cy.visit("/home", { log: false });

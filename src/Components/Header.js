@@ -34,7 +34,7 @@ const Header = () => {
       // call api
       (async () => {
         const { id } = user;
-        const { data } = await api.get(`/api/tutors/${id}`);
+        const { data } = await api.get(`/api/users/${id}`);
         setLoggedUser(data?.profilePictureUrl);
       })();
 

@@ -8,7 +8,7 @@ describe("User Authentication", () => {
       this.user = result;
     });
 
-    cy.intercept("POST", "/api/tutors").as("signup");
+    cy.intercept("POST", "/api/users").as("signup");
   });
 
   it("should redirect unauthenticated user to login page", () => {
