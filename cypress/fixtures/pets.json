@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Rambo",
+        "birthday": "2024-01-01",
+        "size": "Mini",
+        "personality": "Bravinho e fortão",
+        "species": "Dog",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet-client.onrender.com/Amora.png"
+    },
+    {
+        "name": "Dunga",
+        "birthday": "2024-01-01",
+        "size": "Medium",
+        "personality": "Todo todo malandrinho",
+        "species": "Dog",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet.sapituca.site/Dunga.png"
+    },
+    {
+        "name": "Yoda",
+        "birthday": "2024-01-01",
+        "size": "Small",
+        "personality": "Sábio e rabugento",
+        "species": "Cat",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet.sapituca.site/Yoda.png"
+    },
+    {
+        "name": "Zelda",
+        "birthday": "2024-01-01",
+        "size": "Small",
+        "personality": "Aventureira",
+        "species": "Cat",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet.sapituca.site/Zelda.png"
+    },
+    {
+        "name": "Sid",
+        "birthday": "2024-01-01",
+        "size": "Medium",
+        "personality": "Desconfiado, agitado e carinhoso",
+        "species": "Dog",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet.sapituca.site/Sid.png"
+    },
+    {
+        "name": "Fiona",
+        "birthday": "2024-01-01",
+        "size": "Small",
+        "personality": "Muuuito carinhosa, ciumenta e comilona.",
+        "species": "Dog",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet.sapituca.site/Fiona.png"
+    },
+    {
+        "name": "Lua",
+        "birthday": "2024-01-01",
+        "size": "Small",
+        "personality": "Arisca e tímida",
+        "species": "Cat",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet.sapituca.site/Lua.png"
+    },
+    {
+        "name": "Sirius",
+        "birthday": "2024-01-01",
+        "size": "Large",
+        "personality": "Companheiro e amigável",
+        "species": "Dog",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet.sapituca.site/Sirius.png"
+    },
+    {
+        "name": "Felicia",
+        "birthday": "2024-01-01",
+        "size": "Medium",
+        "personality": "Caçadora e manhosa",
+        "species": "Cat",
+        "status": "Available",
+        "profilePictureUrl": "https://adopet.sapituca.site/Felicia.png"
+    }
+]
