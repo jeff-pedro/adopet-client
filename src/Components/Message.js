@@ -38,7 +38,7 @@ const Message = () => {
     } else {
       // call api
       try {
-        await api.put(`/api/tutors/${userData.id}`, data);
+        await api.put(`/api/users/${userData.id}`, data);
 
         alert("Perfil alterado com sucesso!");
 
@@ -56,7 +56,7 @@ const Message = () => {
       (async () => {
         try {
           const { id } = user;
-          const { data } = await api.get(`api/tutors/${id}`);
+          const { data } = await api.get(`api/users/${id}`);
 
           setUserData(data);
 

@@ -1,4 +1,4 @@
-describe("GET /api/tutors", () => {
+describe("GET /api/users", () => {
   before(function () {
     cy.database("users", null, { log: false })
       .then(({ email, password }) => {
@@ -12,7 +12,7 @@ describe("GET /api/tutors", () => {
 
   it("gets a list of users", function () {
     cy.request({
-      url: `${Cypress.env("API_URL")}/api/tutors`,
+      url: `${Cypress.env("API_URL")}/api/users`,
       method: "GET",
       headers: { authorization: this.authorization },
     }).then((response) => {
